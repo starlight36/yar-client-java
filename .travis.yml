@@ -10,7 +10,7 @@ before_script:
   - nohup bash -c "php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources 2>&1 &"
 
 script:
-  - mvn clean test package
+  - mvn clean test
 
 after_success:
-  - mvn clean cobertura:cobertura org.eluder.coveralls:coveralls-maven-plugin:report
+  - mvn clean cobertura:cobertura coveralls:report

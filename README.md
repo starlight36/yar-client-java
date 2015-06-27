@@ -1,5 +1,8 @@
 # Yar RPC Client for Java
 
+[![Build Status](https://travis-ci.org/starlight36/yar-client-java.png?branch=master)](https://travis-ci.org/starlight36/yar-client-java)
+[![Coverage Status](https://coveralls.io/repos/starlight36/yar-client-java/badge.svg)](https://coveralls.io/r/starlight36/yar-client-java)
+
 A simple Java client for [Yar RPC framework](https://github.com/laruence/yar).
 
 ## Introduction
