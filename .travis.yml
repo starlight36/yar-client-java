@@ -9,7 +9,7 @@ before_script:
   - nohup php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources > /dev/null &
 
 script:
-  - mvn clean test package
+  - sh -c 'nohup php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources > /dev/null &' && mvn clean test package
 
 after_success:
   - mvn clean cobertura:cobertura coveralls:report
