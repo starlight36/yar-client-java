@@ -4,11 +4,9 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install php5-cli php5-curl php5-dev php-pear
   - yes n | sudo pecl install yar
-  - sudo sh -c echo 'date.timezone = "PRC"' >> /etc/php.ini
-  - sudo sh -c echo "extension=yar.so" >> /etc/php.ini
 
 before_script:
-  - nohup php -S 127.0.0.1:8095 -t src/test/resources > /dev/null &
+  - nohup php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources > /dev/null &
 
 script:
   - mvn clean test package
