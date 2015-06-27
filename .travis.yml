@@ -7,7 +7,7 @@ before_install:
   - yes no | sudo pecl install yar
 
 before_script:
-  - php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources 2>&1
+  - nohup bash -c "php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources 2>&1 &"
 
 script:
   - mvn clean test package
