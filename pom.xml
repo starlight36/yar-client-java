@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Yar RPC client</name>
+    <description>A simple Java client for Yar RPC framework</description>
+
+    <groupId>com.starlight36</groupId>
+    <artifactId>yar-client</artifactId>
+    <version>0.1.0</version>
+
+    <packaging>jar</packaging>
+    <url>https://github.com/starlight36/yar-client-java/</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/starlight36/yar-client-java.git</connection>
+        <developerConnection>scm:git:git@github.com:starlight36/yar-client-java.git</developerConnection>
+        <url>scm:git:https://github.com/starlight36/yar-client-java.git</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/starlight36/yar-client-java/issues</url>
+    </issueManagement>
+
+    <developers>
+        <developer>
+            <id>starlight36</id>
+            <name>Max Liu</name>
+            <email>me@starlight36.com</email>
+        </developer>
+    </developers>
+
+
+    <repositories>
+        <repository>
+            <id>ailis-releases</id>
+            <name>Ailis Maven Releases</name>
+            <url>http://nexus.ailis.de/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.ailis.pherialize</groupId>
+            <artifactId>pherialize</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.4.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.msgpack</groupId>
+            <artifactId>msgpack</artifactId>
+            <version>0.6.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
