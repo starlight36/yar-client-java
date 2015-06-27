@@ -3,7 +3,7 @@ language: java
 before_install:
   - sudo apt-get update
   - sudo apt-get install php5-cli php5-curl php5-dev php-pear
-  - sudo yes n | pecl install yar
+  - yes n | sudo pecl install yar
 
 before_script:
   - nohup php -S 127.0.0.1:8095 -t src/test/resources > /dev/null &
