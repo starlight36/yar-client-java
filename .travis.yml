@@ -2,7 +2,7 @@ language: java
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install php php-pear
+  - sudo apt-get install php5-cli php5-curl php5-dev php-pear
   - sudo pecl install yar
 
 before_script:
