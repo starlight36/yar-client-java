@@ -21,7 +21,7 @@ public class YarClientTest {
 
     @Before
     public void setUp() throws Exception {
-        client = new YarClient("http://localhost/yar.php");
+        client = new YarClient("http://127.0.0.1:8095/yar.php");
     }
 
     @Test
