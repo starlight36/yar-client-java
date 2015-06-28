@@ -46,7 +46,7 @@ Add the dependency in the form.
 <dependency>
     <groupId>com.github.starlight36</groupId>
     <artifactId>yar-client-java</artifactId>
-    <version>v0.1.1</version>
+    <version>v0.1.2</version>
 </dependency>
 ```
 
