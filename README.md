@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/starlight36/yar-client-java.png?branch=master)](https://travis-ci.org/starlight36/yar-client-java)
 [![Coverage Status](https://coveralls.io/repos/starlight36/yar-client-java/badge.svg)](https://coveralls.io/r/starlight36/yar-client-java)
-[![JitPack](https://img.shields.io/github/tag/starlight36/yar-client-java.svg?label=JitPack)](https://jitpack.io/#starlight36/yar-client-java/v0.1.1)
+[![JitPack](https://img.shields.io/github/tag/starlight36/yar-client-java.svg?label=JitPack)](https://jitpack.io/#starlight36/yar-client-java/v0.1.2)
 
 A simple Java client for [Yar RPC framework](https://github.com/laruence/yar).
 
