@@ -50,11 +50,32 @@ Add the dependency in the form.
 </dependency>
 ```
 
+### Build
+
+To build this project, just use maven.
+
+```shell
+mvn clean package -Dmaven.test.skip=true
+```
+
+### Test
+
+To test this project, you need to provide a php http server 
+listening on localhost:8025. `src/test/resources/yar.php` is the
+server script.
+
+Use php build-in server is a good idea.
+
+```shell
+php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources
+```
+
 ## Limitation
 
 * Native PHP packager is not support correctly.
 * Concurrent or asynchronous call is not support temporarily.
+* Only support HTTP transport, socket transport is planed.
 
 ## Feedback
 
-If you find some bugs, use [Issues](https://github.com/starlight36/yar-client-java/issues).
+If you any questions, use [Issues](https://github.com/starlight36/yar-client-java/issues).
