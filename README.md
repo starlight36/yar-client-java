@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/starlight36/yar-client-java.png?branch=master)](https://travis-ci.org/starlight36/yar-client-java)
 [![Coverage Status](https://coveralls.io/repos/starlight36/yar-client-java/badge.svg)](https://coveralls.io/r/starlight36/yar-client-java)
-[![JitPack](https://img.shields.io/github/tag/starlight36/yar-client-java.svg?label=JitPack)](https://jitpack.io/#starlight36/yar-client-java/v0.1.2)
+[![JitPack](https://img.shields.io/github/tag/starlight36/yar-client-java.svg?label=JitPack)](https://jitpack.io/#starlight36/yar-client-java/v0.1.3)
 
 A simple Java client for [Yar RPC framework](https://github.com/laruence/yar).
 
@@ -46,7 +46,7 @@ Add the dependency in the form.
 <dependency>
     <groupId>com.github.starlight36</groupId>
     <artifactId>yar-client-java</artifactId>
-    <version>v0.1.2</version>
+    <version>v0.1.3</version>
 </dependency>
 ```
 
