@@ -18,7 +18,7 @@ Use this client is very simple, just few codes:
 
 ```java
 YarClient client = new YarClient("http://localhost/yar.php");
-Integer timestamp = client.call("doSomething", Integer, "Hello");
+Integer timestamp = client.call("doSomething", Integer.class, "Hello");
 System.out.println(timestamp);
 client.close();
 ```
