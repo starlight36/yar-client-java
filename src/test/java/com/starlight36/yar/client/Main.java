@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         YarClient client = new YarClient("http://localhost/yar.php");
-        TimeDto time = client.call("doSomething", TimeDto.class, "Hello");
+        DummyTimeDto time = client.call("doSomething", DummyTimeDto.class, "Hello");
         System.out.println(time.getId());
         System.out.println(time.getTime());
         client.close();

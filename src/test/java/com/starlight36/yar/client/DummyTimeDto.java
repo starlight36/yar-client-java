@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * com.starlight36.yar.client.TimeDto
  */
-public class TimeDto implements Serializable {
+public class DummyTimeDto implements Serializable {
 
     private Integer time;
 

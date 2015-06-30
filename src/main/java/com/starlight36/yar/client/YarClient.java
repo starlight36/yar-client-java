@@ -31,7 +31,9 @@ public class YarClient implements Closeable {
         YarRequest yarRequest = new YarRequest();
         yarRequest.setPackagerName(configurationProperties.getProperty("yar.packager", "json"));
         yarRequest.setMethodName(method);
-        yarRequest.setParameters(parameterObject);
+        if (parameterObject != null && parameterObject.length > 0) {
+            yarRequest.setParameters(parameterObject);
+        }
         YarResponse yarResponse = transport.execute(yarRequest);
         return yarResponse.fetchContent(responseClass);
     }

@@ -9,8 +9,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.*;
+import java.util.Properties;
 
 /**
  * YarClientTest
@@ -38,10 +37,22 @@ public class YarClientTest {
 
     @Test
     public void testReturnMixed() throws IOException {
-        TimeDto timeDto = client.call("returnMixed", TimeDto.class);
+        DummyTimeDto timeDto = client.call("returnMixed", DummyTimeDto.class);
         Assert.assertNotNull(timeDto);
         Assert.assertEquals(Integer.valueOf((int) (new Date().getTime() / 1000)), timeDto.getTime());
         Assert.assertNotNull(timeDto.getId());
+    }
+
+    @Test
+    public void testReturnComplexObject() throws IOException {
+        DummyResultDto resultDto = client.call("returnComplexObject", DummyResultDto.class);
+        Assert.assertNotNull(resultDto);
+        List<DummyUserDto> list = resultDto.getList();
+        Assert.assertNotNull(list);
+        Assert.assertFalse(list.isEmpty());
+        DummyUserDto userDto = list.get(0);
+        Assert.assertEquals(1, userDto.getId());
+        Assert.assertEquals("user1", userDto.getName());
     }
 
     @Test

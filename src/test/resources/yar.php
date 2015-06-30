@@ -15,6 +15,21 @@ class API {
 		);
 	}
 
+	public function returnComplexObject() {
+		return array(
+			'list' => array(
+				array(
+					'id' => 1,
+					'name' => 'user1'
+				),
+				array(
+					'id' => 2,
+					'name' => 'user2'
+				)
+			) 
+		);
+	}
+
 	public function echoRequest($param1, $param2) {
 		return array(
 			'param1' => $param1,
