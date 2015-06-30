@@ -18,7 +18,6 @@ public class YarResponse {
     private static final Logger logger = Logger.getLogger(YarResponse.class.getName());
 
     private ByteArrayInputStream responseDataInputStream;
-    private ObjectMapper objectMapper = new ObjectMapper();
 
     public YarResponse(byte[] responseData) {
         responseDataInputStream = new ByteArrayInputStream(responseData);
@@ -45,7 +44,7 @@ public class YarResponse {
 
         // Unpack all results
         Packager packager = new PackagerFactory().createPackager(packagerName);
-        Map entry = packager.decode(bodyBytes, Map.class);
+        Map entry = packager.decode(bodyBytes, contentClass);
 
         // Server output will be write to logger
         String output = entry.get("o").toString();
@@ -56,7 +55,7 @@ public class YarResponse {
         // if it has some exception...
         if(entry.containsKey("e")) {
             Map exceptionMap = (Map) entry.get("e");
-            if(exceptionMap != null && exceptionMap instanceof Map) {
+            if (exceptionMap != null) {
                 String message = exceptionMap.get("message").toString();
                 String file =  exceptionMap.get("file").toString();
                 Long code = Long.valueOf(exceptionMap.get("code").toString());
@@ -65,6 +64,6 @@ public class YarResponse {
             }
         }
 
-        return objectMapper.convertValue(entry.get("r"), contentClass);
+        return contentClass.cast(entry.get("r"));
     }
 }
