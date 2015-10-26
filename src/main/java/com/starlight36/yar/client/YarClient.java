@@ -34,7 +34,7 @@ public class YarClient implements Closeable {
     }
 
     public <E> E call(String method, Class<E> responseClass, Object... parameterObject) throws IOException {
-        YarRequest request = new YarRequest(method);
+        YarRequest request = new YarRequest(method, configs.getProperty("yar.packager", "json"));
         if (parameterObject != null && parameterObject.length > 0) {
             request.setParameters(parameterObject);
         }

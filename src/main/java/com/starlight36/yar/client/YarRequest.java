@@ -44,8 +44,9 @@ public class YarRequest {
         this.parameters = parameters;
     }
 
-    public YarRequest(String method) {
+    public YarRequest(String method, String packager) {
         this.methodName = method;
+        this.packagerName = packager;
     }
 
     /**
