@@ -61,7 +61,7 @@ mvn clean package -Dmaven.test.skip=true
 ### Test
 
 To test this project, you need to provide a php http server 
-listening on localhost:8025. `src/test/resources/yar.php` is the
+listening on localhost:8095. `src/test/resources/yar.php` is the
 server script.
 
 Use php build-in server is a good idea.
