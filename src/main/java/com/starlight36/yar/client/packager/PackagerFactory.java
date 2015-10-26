@@ -1,5 +1,9 @@
 package com.starlight36.yar.client.packager;
 
+import com.starlight36.yar.client.packager.impl.JsonPackager;
+import com.starlight36.yar.client.packager.impl.MsgpackPackager;
+import com.starlight36.yar.client.packager.impl.PherializePackager;
+
 /**
  * PackagerFactory
  */

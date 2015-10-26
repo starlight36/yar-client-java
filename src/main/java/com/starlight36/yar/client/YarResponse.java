@@ -17,17 +17,19 @@ public class YarResponse {
 
     private static final Logger logger = Logger.getLogger(YarResponse.class.getName());
 
+    private PackagerFactory pkgFactory = new PackagerFactory();
+
     private ByteArrayInputStream responseDataInputStream;
 
     public YarResponse(byte[] responseData) {
         responseDataInputStream = new ByteArrayInputStream(responseData);
     }
 
-    public <T> T fetchContent(Class<T> contentClass) throws IOException {
+    public String parseHeader(YarProtocol protocol) throws IOException {
         // Read protocol header.
         byte[] headerBytes = new byte[82];
         responseDataInputStream.read(headerBytes);
-        YarProtocol protocol = new YarProtocol();
+
         protocol.parse(headerBytes);
 
         // Read 8 bytes as packager name.
@@ -36,14 +38,21 @@ public class YarResponse {
         // Trade '\0' as the terminal char.
         int length;
         for(length = 0; length < packagerNameBytes.length && packagerNameBytes[length] != 0; length++);
-        String packagerName = new String(packagerNameBytes, 0, length);
+        return new String(packagerNameBytes, 0, length);
+    }
+
+    public <T> T fetchContent(Class<T> contentClass) throws IOException {
+
+        YarProtocol protocol = new YarProtocol();
+
+        String packagerName = this.parseHeader(protocol);
 
         // remain bytes is response content.
         byte[] bodyBytes = new byte[(int)(protocol.getBodyLenght() - 8)];
         responseDataInputStream.read(bodyBytes);
 
         // Unpack all results
-        Packager packager = new PackagerFactory().createPackager(packagerName);
+        Packager packager = pkgFactory.createPackager(packagerName);
         Map entry = packager.decode(bodyBytes, contentClass);
 
         // Server output will be write to logger
@@ -63,7 +72,7 @@ public class YarResponse {
                 throw new YarException(message, code, file, line);
             }
         }
-
+        System.out.println(entry.get("r"));
         return contentClass.cast(entry.get("r"));
     }
 }

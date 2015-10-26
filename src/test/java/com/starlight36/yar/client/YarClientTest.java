@@ -28,6 +28,12 @@ public class YarClientTest {
         Integer returnValue = client.call("returnSimpleValue", Integer.class);
         Assert.assertEquals(Integer.valueOf(1024), returnValue);
     }
+    
+    @Test
+    public void testParams() throws IOException {
+        Integer returnValue = client.call("testParams", Integer.class, 100);
+        Assert.assertEquals(Integer.valueOf(100), returnValue);
+    }
 
     @Test
     public void testReturnArray() throws IOException {

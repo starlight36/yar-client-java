@@ -14,7 +14,7 @@ public interface Transport extends Closeable {
 
     void configure(Properties properties);
 
-    void open(String uri) throws IOException;
+    void init(String uri) throws IOException;
 
     YarResponse execute(YarRequest request) throws IOException;
 

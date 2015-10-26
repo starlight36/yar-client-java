@@ -26,7 +26,7 @@ public class HttpClientTransport implements Transport {
         configuration = properties;
     }
 
-    public void open(String uri) throws IOException {
+    public void init(String uri) throws IOException {
         httpClient = HttpClients.createDefault();
         endpoint = uri;
     }

@@ -1,6 +1,7 @@
-package com.starlight36.yar.client.packager;
+package com.starlight36.yar.client.packager.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.starlight36.yar.client.packager.Packager;
 import de.ailis.pherialize.Mixed;
 import de.ailis.pherialize.MixedArray;
 import de.ailis.pherialize.Pherialize;

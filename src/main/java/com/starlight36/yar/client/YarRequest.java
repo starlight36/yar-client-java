@@ -44,6 +44,10 @@ public class YarRequest {
         this.parameters = parameters;
     }
 
+    public YarRequest(String method) {
+        this.methodName = method;
+    }
+
     /**
      * 请求转换为字节
      * @return

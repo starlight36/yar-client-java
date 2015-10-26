@@ -3,7 +3,11 @@ class API {
 	public function returnSimpleValue() {
 		return 1024;
 	}
-
+	
+	public function testParams($par) {
+		return $par;
+	}
+	
 	public function returnArray() {
 		return array(1, 2, 3);
 	}
