@@ -20,10 +20,10 @@ public class YarClient implements Closeable {
         this(endpointUri, null);
     }
 
-    public YarClient(String endpointUri, Properties configurations) throws IOException {
-        configs = new Properties(configurations);
+    public YarClient(String endpointUri, Properties _config) throws IOException {
+        configs = new Properties(_config);
         transport = new TransportFactory().create(URI.create(endpointUri).getScheme());
-        transport.configure(configurations);
+        transport.configure(configs);
         transport.init(endpointUri);
     }
 
