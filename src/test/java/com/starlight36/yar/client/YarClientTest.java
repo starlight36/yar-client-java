@@ -5,11 +5,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * YarClientTest
@@ -17,9 +18,35 @@ import java.util.Properties;
 public class YarClientTest {
 
     private YarClient client;
+    private Thread phpweb;
 
     @Before
     public void setUp() throws Exception {
+        final StringBuffer output = new StringBuffer();
+
+        Runnable r = new Runnable() {
+            public void run() {
+                try {
+                    Process p;
+                    p = Runtime.getRuntime().exec("/bin/php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources");
+                    p.waitFor();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+                    String line = "";
+                    while ((line = reader.readLine())!= null) {
+                        output.append(line + "\n");
+                    }
+                } catch(InterruptedException e) {
+                    //TODO may terminted by others
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+        phpweb = new Thread(r);
+        phpweb.start();
+
         client = new YarClient("http://127.0.0.1:8095/yar.php");
     }
 
@@ -92,5 +119,6 @@ public class YarClientTest {
     @After
     public void tearDown() throws Exception {
         client.close();
+        phpweb.interrupt();
     }
 }

@@ -72,7 +72,6 @@ public class YarResponse {
                 throw new YarException(message, code, file, line);
             }
         }
-        System.out.println(entry.get("r"));
         return contentClass.cast(entry.get("r"));
     }
 }
