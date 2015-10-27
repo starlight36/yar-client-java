@@ -51,6 +51,13 @@ public class YarClientTest {
     }
 
     @Test
+    public void testWithYarRequest() throws IOException {
+
+        Integer returnValue = client.call(new YarRequest("returnSimpleValue", "json"), Integer.class);
+        Assert.assertEquals(Integer.valueOf(1024), returnValue);
+    }
+
+    @Test
     public void testReturnSimpleValue() throws IOException {
         Integer returnValue = client.call("returnSimpleValue", Integer.class);
         Assert.assertEquals(Integer.valueOf(1024), returnValue);
