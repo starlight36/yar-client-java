@@ -28,7 +28,7 @@ public class YarClientTest {
             public void run() {
                 try {
                     Process p;
-                    p = Runtime.getRuntime().exec("/bin/php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources");
+                    p = Runtime.getRuntime().exec("/usr/bin/php -ddate.timezone=PRC -dextension=yar.so -S 127.0.0.1:8095 -t src/test/resources");
                     p.waitFor();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
