@@ -44,6 +44,11 @@ public class YarRequest {
         this.parameters = parameters;
     }
 
+    public YarRequest(String method, String packager) {
+        this.methodName = method;
+        this.packagerName = packager;
+    }
+
     /**
      * 请求转换为字节
      * @return

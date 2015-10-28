@@ -1,6 +1,7 @@
-package com.starlight36.yar.client.packager;
+package com.starlight36.yar.client.packager.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.starlight36.yar.client.packager.Packager;
 import org.msgpack.MessagePack;
 import org.msgpack.type.ArrayValue;
 import org.msgpack.type.MapValue;
