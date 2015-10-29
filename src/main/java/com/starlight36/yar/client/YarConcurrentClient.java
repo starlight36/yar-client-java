@@ -2,10 +2,15 @@ package com.starlight36.yar.client;
 
 import com.starlight36.yar.client.transport.Transport;
 import com.starlight36.yar.client.transport.TransportFactory;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.concurrent.FutureCallback;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URI;
 import java.util.Properties;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by sunan on 10/28/15.
@@ -25,20 +30,14 @@ public class YarConcurrentClient {
         transport.init(endpointUri);
     }
 
-    public <E> E call(YarRequest request, Class<E> responseClass) throws IOException {
+    public <T> void call(YarRequest request[], YarCallback<T> cb, Class<T> cla) throws Exception {
 
-        YarResponse response = transport.execute(request);
-        return response.fetchContent(responseClass);
+        final CountDownLatch latch = new CountDownLatch(request.length);
+
+        transport.asyncExecute(request, cb, latch, cla);
+        latch.await();
     }
 
-    public <E> E call(String method, Class<E> responseClass, Object... parameterObject) throws IOException {
-        YarRequest request = new YarRequest(method, configs.getProperty("yar.packager", "json"));
-        if (parameterObject != null && parameterObject.length > 0) {
-            request.setParameters(parameterObject);
-        }
-        YarResponse response = transport.execute(request);
-        return response.fetchContent(responseClass);
-    }
 
     public void close() throws IOException {
         if(transport != null) {

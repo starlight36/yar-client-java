@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class YarConcurrentClientTest {
 
-    private YarClient client;
+    private YarConcurrentClient client;
     private Thread phpweb;
 
     @Before
@@ -47,20 +47,48 @@ public class YarConcurrentClientTest {
         phpweb = new Thread(r);
         phpweb.start();
 
-        client = new YarClient("http://127.0.0.1:8095/yar.php");
+        client = new YarConcurrentClient("http://127.0.0.1:8095/yar.php");
     }
 
     @Test
-    public void testWithYarRequest() throws IOException {
+    public void testWithYarRequest() throws Exception {
+        for (int j = 1; j < 1000000; j*=10) {
 
-        Integer returnValue = client.call(new YarRequest("returnSimpleValue", "json"), Integer.class);
-        Assert.assertEquals(Integer.valueOf(1024), returnValue);
+            final long starTime = System.currentTimeMillis();
+            YarRequest req[] = new YarRequest[j];
+            for (int i = 0; i < req.length; i++) {
+                req[i] = new YarRequest("returnSimpleValue", "json");
+            }
+
+
+            YarCallback cb = new YarCallback<Integer>() {
+                @Override
+                public void completed(Integer var1) {
+                    //System.out.println(var1);
+                    //System.out.println("complete" + (System.currentTimeMillis() - starTime));
+                }
+
+                @Override
+                public void failed(Exception var1) {
+
+                }
+
+                @Override
+                public void cancelled() {
+
+                }
+            };
+
+            client.call(req, cb, Integer.class);
+            System.out.println("Over(" + j + ")" + (System.currentTimeMillis() - starTime));
+        }
+
+        //Assert.assertEquals(Integer.valueOf(1024), returnValue);
     }
 
 
     @After
     public void tearDown() throws Exception {
-        client.close();
-        phpweb.interrupt();
+
     }
 }

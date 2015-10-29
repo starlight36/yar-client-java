@@ -56,9 +56,11 @@ public class YarResponse {
         Map entry = packager.decode(bodyBytes, contentClass);
 
         // Server output will be write to logger
-        String output = entry.get("o").toString();
-        if(output != null && !output.isEmpty()) {
-            logger.log(Level.INFO, output);
+        if (entry.containsKey("o")) {
+            String output = entry.get("o").toString();
+            if (output != null && !output.isEmpty()) {
+                logger.log(Level.INFO, output);
+            }
         }
 
         // if it has some exception...
