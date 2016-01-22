@@ -7,7 +7,7 @@ before_install:
   - echo "yes" | sudo pecl install --alldeps channel://pecl.php.net/msgpack-0.5.7
   #- yes yes | sudo pecl install channel://pecl.php.net/msgpack-0.5.7
   - php -m
-  - yes yes | sudo pecl install yar
+  - yes no | sudo pecl install yar
   - php --ri yar
 
 
