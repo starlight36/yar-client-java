@@ -5,7 +5,8 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install php5 php5-dev php-pear
   - yes '' | sudo pecl install channel://pecl.php.net/msgpack-0.5.7
-  - yes no | sudo pecl install yar
+  - php -m
+  - yes yes | sudo pecl install yar
 
 
 before_script:
