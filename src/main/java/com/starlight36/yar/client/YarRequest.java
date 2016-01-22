@@ -5,18 +5,16 @@ import com.starlight36.yar.client.packager.PackagerFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * YarRequest
  */
 public class YarRequest {
 
-    private String packagerName;
-    private String methodName;
-    private Object[] parameters;
+    private String  packagerName;
+    private String  methodName;
+    private List    parameters;
 
     private PackagerFactory packagerFactory = new PackagerFactory();
 
@@ -36,12 +34,16 @@ public class YarRequest {
         this.methodName = methodName;
     }
 
-    public Object[] getParameters() {
+    public List getParameters() {
         return parameters;
     }
 
     public void setParameters(Object[] parameters) {
-        this.parameters = parameters;
+        List<Object> list = new ArrayList<Object>();
+        for (Object param : parameters) {
+            list.add(param);
+        }
+        this.parameters = list;
     }
 
     public YarRequest(String method, String packager) {
