@@ -4,10 +4,10 @@ before_install:
   - sudo add-apt-repository -y ppa:ondrej/php5
   - sudo apt-get update
   - sudo apt-get install php5 php5-dev php-pear
-  - echo "yes" | sudo pecl install --alldeps channel://pecl.php.net/msgpack-0.5.7 && yes no | sudo pecl install yar
+  - echo "yes" | sudo pecl install --alldeps channel://pecl.php.net/msgpack-0.5.7
   #- yes yes | sudo pecl install channel://pecl.php.net/msgpack-0.5.7
   - php -m
-  #- yes yes | sudo pecl install yar
+  - yes yes | sudo pecl install yar
   - php --ri yar
 
 
