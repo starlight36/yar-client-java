@@ -4,7 +4,9 @@ before_install:
   - sudo add-apt-repository -y ppa:ondrej/php5
   - sudo apt-get update
   - sudo apt-get install php5 php5-dev php-pear
+  - yes '' | sudo pecl install msgpack
   - yes no | sudo pecl install yar
+
 
 before_script:
     # There is no need to run this, cause now we run it in java
