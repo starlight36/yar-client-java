@@ -52,7 +52,7 @@ public class YarConcurrentClientTest {
 
     @Test
     public void testWithYarRequest() throws Exception {
-        for (int j = 1; j < 1000000; j*=10) {
+        for (int j = 1; j < 100; j*=10) {
 
             final long starTime = System.currentTimeMillis();
             YarRequest req[] = new YarRequest[j];
@@ -64,7 +64,7 @@ public class YarConcurrentClientTest {
             YarCallback cb = new YarCallback<Integer>() {
                 @Override
                 public void completed(Integer var1) {
-                    //System.out.println(var1);
+                    Assert.assertEquals(new Integer(1024), var1);
                     //System.out.println("complete" + (System.currentTimeMillis() - starTime));
                 }
 
@@ -80,7 +80,6 @@ public class YarConcurrentClientTest {
             };
 
             client.call(req, cb, Integer.class);
-            System.out.println("Over(" + j + ")" + (System.currentTimeMillis() - starTime));
         }
 
         //Assert.assertEquals(Integer.valueOf(1024), returnValue);
